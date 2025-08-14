@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Clients · ClientVault{% endblock %}
+{% block content %}
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-2xl font-semibold">My Clients</h1>
+  <div class="flex gap-2">
+    <a href="/add-client" class="inline-flex items-center rounded-lg px-4 py-2 text-white bg-lilac-500 hover:opacity-95">+ Add Client</a>
+    <a href="/search" class="inline-flex items-center rounded-lg px-4 py-2 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">Search</a>
+  </div>
+</div>
+
+{% if clients and clients|length %}
+<div class="bg-white rounded-xl shadow border border-slate-200 overflow-x-auto">
+  <table class="min-w-full text-sm">
+    <thead class="bg-white border-b">
+      <tr class="text-slate-600">
+        <th class="px-4 py-3 text-left">First</th>
+        <th class="px-4 py-3 text-left">Last</th>
+        <th class="px-4 py-3 text-left">Email</th>
+        <th class="px-4 py-3 text-left">Phone</th>
+        <th class="px-4 py-3 text-left">DL #</th>
+        <th class="px-4 py-3 text-left">Date of Loss</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y">
+      {% for c in clients %}
+      <!-- c: 0 id, 1 first, 2 last, 3 email, 4 phone, 5 dl, 6 date, 7 law_firm_id -->
+      <tr class="hover:bg-sand/40">
+        <td class="px-4 py-3">{{ c[1] }}</td>
+        <td class="px-4 py-3">{{ c[2] }}</td>
+        <td class="px-4 py-3">{{ c[3] }}</td>
+        <td class="px-4 py-3">{{ c[4] }}</td>
+        <td class="px-4 py-3">{{ c[5] }}</td>
+        <td class="px-4 py-3">{{ c[6] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="bg-white rounded-xl shadow border border-slate-200 p-6 text-slate-600">
+  No clients yet. <a href="/add-client" class="underline text-lilac-300">Add one now</a>.
+</div>
+{% endif %}
+{% endblock %}

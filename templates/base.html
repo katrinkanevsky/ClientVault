@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}ClientVault{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Use your built Tailwind file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='tw.css') }}">
+</head>
+<body class="bg-sand text-slate-800">
+  <!-- Top Nav -->
+  <header class="bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-full bg-lilac-500"></div>
+        <span class="font-semibold text-slate-900">ClientVault</span>
+      </a>
+      <nav class="flex items-center gap-3 text-sm">
+        {% if 'law_firm_id' in session %}
+          <a href="/dashboard" class="hover:text-lilac-500">Dashboard</a>
+          <a href="/clients" class="hover:text-lilac-500">Clients</a>
+          <a href="/add-client" class="hover:text-lilac-500">Add Client</a>
+          <a href="/search" class="hover:text-lilac-500">Search</a>
+          <a href="/logout" class="inline-flex items-center rounded-lg px-4 py-2 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">Logout</a>
+        {% else %}
+          <a href="/login" class="inline-flex items-center rounded-lg px-4 py-2 text-white bg-lilac-500 hover:opacity-95">Login</a>
+          <a href="/signup" class="inline-flex items-center rounded-lg px-4 py-2 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">Sign Up</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page content -->
+  <main class="max-w-6xl mx-auto p-6">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

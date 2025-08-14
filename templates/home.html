@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}ClientVault{% endblock %}
+{% block content %}
+
+<!-- HERO (2-column) -->
+<section class="relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow mb-10">
+  <div class="grid lg:grid-cols-2 gap-0">
+    <!-- Left: headline + tiny subline + CTAs -->
+    <div class="p-8 sm:p-12">
+      <h1 class="text-3xl sm:text-4xl font-semibold leading-tight mb-4">
+        Simple Client Management for Law Firms
+      </h1>
+      
+      <p class="text-slate-600 mb-6">Quickly add, search, and manage relevant client data! Less time searching means more time for yourself</p>
+
+      {% if 'law_firm_id' in session %}
+      <div class="flex flex-wrap gap-3">
+        <a href="/dashboard" class="inline-flex items-center rounded-lg px-5 py-2.5 text-white bg-lilac-500 hover:opacity-95">Go to Dashboard</a>
+        <a href="/clients" class="inline-flex items-center rounded-lg px-5 py-2.5 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">View Clients</a>
+      </div>
+      {% else %}
+      <div class="flex flex-wrap gap-3">
+        <a href="/signup" class="inline-flex items-center rounded-lg px-5 py-2.5 text-white bg-lilac-500 hover:opacity-95">Sign Up Your Law Firm</a>
+        <a href="/login" class="inline-flex items-center rounded-lg px-5 py-2.5 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">Log In</a>
+      </div>
+      {% endif %}
+      <p class="mt-4 text-xs text-slate-500">Trusted by legal professionals • Built with security in mind</p>
+    </div>
+
+    <!-- Right: “About” panel (no image) -->
+    <div class="bg-sand/60 p-8 sm:p-12 flex items-center justify-center">
+      <div class="max-w-md">
+        <h2 class="text-xl font-semibold mb-3">About ClientVault</h2>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          ClientVault gives law firms a secure, intuitive space to manage sensitive client data. 
+          With fast search, per firm data isolation, and streamlined workflows, it keeps your practice organized, efficient, and compliant without extra clutter.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="mb-10">
+  <h2 class="text-xl font-semibold mb-4">Why ClientVault</h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">Firm-Level Isolation</h3>
+      <p class="text-sm text-slate-600">Each firm sees only its own data! No cross visibility.</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">Fast Search</h3>
+      <p class="text-sm text-slate-600">Filter by name, date of loss, email, phone, or DL instantly.</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">Clean Workflow</h3>
+      <p class="text-sm text-slate-600">Focused dashboard and simple forms to move faster.</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">Secure by Design</h3>
+      <p class="text-sm text-slate-600">Session based access and privacy first handling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="mb-10">
+  <div class="rounded-2xl border border-lilac-300 bg-white p-6 sm:p-8">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Get started in minutes</h2>
+        <p class="text-sm text-slate-600">Add your firm, invite your team, and import existing client data when you’re ready.</p>
+      </div>
+      <div class="flex md:justify-end gap-3">
+        {% if 'law_firm_id' in session %}
+          <a href="/add-client" class="inline-flex items-center rounded-lg px-5 py-2.5 text-white bg-lilac-500 hover:opacity-95">+ Add Client</a>
+          <a href="/clients" class="inline-flex items-center rounded-lg px-5 py-2.5 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">View Clients</a>
+        {% else %}
+          <a href="/signup" class="inline-flex items-center rounded-lg px-5 py-2.5 text-white bg-lilac-500 hover:opacity-95">Create Firm Account</a>
+          <a href="/login" class="inline-flex items-center rounded-lg px-5 py-2.5 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">Log In</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE HIGHLIGHTS -->
+<section>
+  <h2 class="text-xl font-semibold mb-4">What you can do</h2>
+  <div class="grid lg:grid-cols-3 gap-4">
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">Add & Manage Clients</h3>
+      <p class="text-sm text-slate-600 mb-3">Store contact info, DL numbers, and dates of loss with ease.</p>
+      <a href="/add-client" class="inline-flex items-center rounded-lg px-4 py-2 text-white bg-lilac-500 hover:opacity-95">Add Client</a>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">Search & Filter</h3>
+      <p class="text-sm text-slate-600 mb-3">Find the right record in seconds, no more manual scrolling.</p>
+      <a href="/search" class="inline-flex items-center rounded-lg px-4 py-2 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">Search</a>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <h3 class="font-medium mb-1">See All Clients</h3>
+      <p class="text-sm text-slate-600 mb-3">Review your firm’s records at a glance.</p>
+      <a href="/clients" class="inline-flex items-center rounded-lg px-4 py-2 border border-lilac-500 text-lilac-500 hover:bg-lilac-500 hover:text-white">View Clients</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS/Editors
+.DS_Store
+.vscode/
+.idea/
+
+# Env / secrets
+.env
+
+# Build sources (we commit compiled CSS instead)
+static/src/
+
+# Local databases (don’t leak real data)
+*.sqlite3
+*.db
