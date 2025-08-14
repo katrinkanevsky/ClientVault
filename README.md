@@ -36,15 +36,12 @@ pip install -r requirements.txt
 ```
 
 ### 3) Initialize the database (SQLite)
-Run the scripts that create the tables (and optionally seed firms).  
-Use whichever script(s) your project needs:
+Run setup_database.py in your terminal to set up the database
 ```bash
-# Most projects use these:
-python init_db.py
-python init_law_firms.py
+# 
+python setup_database.py
 
-# If you have a combined script, use this instead of the two above:
-# python setup_database.py
+# 
 ```
 
 ### 4) Secret key (sessions)
